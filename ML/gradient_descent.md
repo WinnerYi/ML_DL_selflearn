@@ -64,8 +64,8 @@ $$b = b - \alpha \frac{\partial}{\partial b} J(w,b)$$
 
 * **正確的實作方式（使用暫存變數）**：
     ```python
-   temp_w = w - alpha * d_dw
-   temp_b = b - alpha * d_db
+   temp_w = w - alpha * d_dw * J(w,b)
+   temp_b = b - alpha * d_db * J(w,b)
    w = temp_w
    b = temp_b
     ```
@@ -74,9 +74,9 @@ $$b = b - \alpha \frac{\partial}{\partial b} J(w,b)$$
 
 * **錯誤的實作方式**：
   ```python
-  temp_w = w - alpha * d_dw
+  temp_w = w - alpha * d_dw * J(w,b)
   w = temp_w
-  temp_b = b - alpha * d_db     # 此處的 w 已經是更新後的值，會導致邏輯錯誤
+  temp_b = b - alpha * d_db * J(w,b)    # 此處的 w 已經是更新後的值，會導致邏輯錯誤
   b = temp_b
   ```
     如果先計算並更新了 $w$，接著在計算 $b$ 的更新時直接帶入「已更新的 $w$」，這就不屬於標準的梯度下降法（雖然有時有效，但性質已改變）。
