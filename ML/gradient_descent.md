@@ -63,13 +63,22 @@ $$b = b - \alpha \frac{\partial}{\partial b} J(w,b)$$
 在程式實作時，**必須同時更新參數 $w$ 與 $b$**，這是維持演算法正確性的關鍵細節。
 
 * **正確的實作方式（使用暫存變數）**：
-    $$\text{temp\_w} = w - \alpha \frac{\partial}{\partial w} J(w,b)$$
-    $$\text{temp\_b} = b - \alpha \frac{\partial}{\partial b} J(w,b)$$
-    $$w = \text{temp\_w}$$
-    $$b = \text{temp\_b}$$
+    ```python
+   temp_w = w - alpha * d_dw
+   temp_b = b - alpha * d_db
+   w = temp_w
+   b = temp_b
+    ```
     *註：這樣可以確保在計算 $b$ 的更新值時，使用的是尚未被改變的 $w$。*
+    
 
 * **錯誤的實作方式**：
+  ```python
+  temp_w = w - alpha * d_dw
+  w = temp_w
+  temp_b = b - alpha * d_db     # 此處的 w 已經是更新後的值，會導致邏輯錯誤
+  b = temp_b
+  ```
     如果先計算並更新了 $w$，接著在計算 $b$ 的更新時直接帶入「已更新的 $w$」，這就不屬於標準的梯度下降法（雖然有時有效，但性質已改變）。
 
 ### 3. 收斂 (Convergence)
