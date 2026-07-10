@@ -1,6 +1,6 @@
 # 邏輯回歸：損失函數與代價函數（Logistic Regression Loss & Cost Function）
 
-在邏輯回歸中，模型的預測輸出為非線性的 S 型函數（Sigmoid），形式為 $f_{\mathbf{w},b}(\mathbf{x}) = rac{1}{1 + e^{-(\mathbf{w}\cdot\mathbf{x} + b)}}$，其值介於 $0$ 到 $1$ 之間，代表分類為正樣本（$ y=1 $）的機率。
+在邏輯回歸中，模型的預測輸出為非線性的 S 型函數（Sigmoid），形式為 $f_{\mathbf{w},b}(\mathbf{x}) = \frac{1}{1 + e^{-(\mathbf{w}\cdot\mathbf{x} + b)}}$，其值介於 $0$ 到 $1$ 之間，代表分類為正樣本（$y=1$）的機率。
 
 ---
 
