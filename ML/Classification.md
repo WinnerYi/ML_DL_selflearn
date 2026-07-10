@@ -49,7 +49,7 @@ $$g(z) = \frac{1}{1 + e^{-z}}$$
 1. **線性運算**：先計算輸入特徵的線性組合 $z = \mathbf{w} \cdot \mathbf{x} + b$（此步驟與線性迴歸公式完全相同）。
 2. **非線性轉換**：將 $z$ 代入 Sigmoid 函數中進行映射，得到最終的預測模型：
 
-$$f(\mathbf{x}) = g(\mathbf{w} \cdot \mathbf{x} + b) = rac{1}{1 + e^{-(\mathbf{w} \cdot \mathbf{x} + b)}}$$
+$$f(\mathbf{x}) = g(\mathbf{w} \cdot \mathbf{x} + b) = g(z) = \frac{1}{1 + e^{w*x+b}}$$
 
 ### 3. 輸出結果的機率解讀
 
