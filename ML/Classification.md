@@ -36,7 +36,7 @@ Sigmoid 函數（又稱邏輯函數，Logistic Function）是邏輯迴歸的核�
 
 $$g(z) = \frac{1}{1 + e^{-z}}$$
 
-![Sigmoid 函數曲線圖](https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Logistic-curve.svg/640px-Logistic-curve.svg.png)
+![Sigmoid 函數曲線圖](https://upload.wikimedia.org/wikipedia/commons/3/33/Sigmoid_function_01.png)
 
 **【函數重要特性】**
 * **輸出範圍**：對於任何實數 $z$，输出值 $g(z)$ 始終介於 $0$ 與 $1$ 之間。
