@@ -13,7 +13,7 @@ $$w_j = w_j -  alpha \frac{\partial J(w,b)}{\partial w_j}$$
 
 $$b = b -  alpha \frac{\partial J(w,b)}{\partial b}$$
 
-其中 $ lpha$ 為學習率（Learning Rate）。
+其中 $alpha$ 為學習率（Learning Rate）。
 
 ### 微分項（Derivative terms）內容
 * **對於 $w_j$ 的偏微分：**
