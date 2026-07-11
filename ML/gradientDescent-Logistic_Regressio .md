@@ -9,9 +9,9 @@
 為了最小化代價函數，我們同樣使用梯度下降演算法。其核心步驟是不斷重複更新參數，直到收斂：
 
 ### 更新公式
-$$w_j = w_j -  lpha \frac{\partial J(w,b)}{\partial w_j}$$
+$$w_j = w_j -  alpha \frac{\partial J(w,b)}{\partial w_j}$$
 
-$$b = b -  lpha \frac{\partial J(w,b)}{\partial b}$$
+$$b = b -  alpha \frac{\partial J(w,b)}{\partial b}$$
 
 其中 $ lpha$ 為學習率（Learning Rate）。
 
