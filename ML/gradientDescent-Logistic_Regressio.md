@@ -10,13 +10,9 @@
 
 ### 更新公式
 
-$$
-w_j = w_j - \alpha \frac{\partial J(w,b)}{\partial w_j}
-$$
+$$w_j = w_j - \alpha \frac{\partial J(w,b)}{\partial w_j}$$
 
-$$
-b = b - \alpha \frac{\partial J(w,b)}{\partial b}
-$$
+$$b = b - \alpha \frac{\partial J(w,b)}{\partial b}$$
 
 其中 $\alpha$ 為學習率（Learning Rate）。
 
@@ -24,28 +20,12 @@ $$
 
 **對於 $w_j$ 的偏微分：**
 
-$$
-\frac{\partial J(w,b)}{\partial w_j}
-=
-\frac{1}{m}
-\sum_{i=1}^{m}
-\left(
-f_{w,b}(x^{(i)})-y^{(i)}
-\right)
-x_j^{(i)}
-$$
+
+$$\frac{\partial J(w,b)}{\partial w_j}=\frac{1}{m}\sum_{i=1}^{m}\left(f_{w,b}(x^{(i)})-y^{(i)}\right)x_j^{(i)}$$
 
 **對於 $b$ 的偏微分：**
 
-$$
-\frac{\partial J(w,b)}{\partial b}
-=
-\frac{1}{m}
-\sum_{i=1}^{m}
-\left(
-f_{w,b}(x^{(i)})-y^{(i)}
-\right)
-$$
+$$\frac{\partial J(w,b)}{\partial b}=\frac{1}{m}\sum_{i=1}^{m}\left(f_{w,b}(x^{(i)})-y^{(i)}\right)$$
 
 ### 更新原則
 
@@ -60,19 +40,11 @@ $$
 
 **線性迴歸（Linear Regression）：**
 
-$$
-f_{w,b}(x)=\vec{w}\cdot\vec{x}+b
-$$
+$$f_{w,b}(x)=\vec{w}\cdot\vec{x}+b$$
 
 **邏輯迴歸（Logistic Regression）：**
 
-$$
-f_{w,b}(x)
-=
-g(\vec{w}\cdot\vec{x}+b)
-=
-\frac{1}{1+e^{-(\vec{w}\cdot\vec{x}+b)}}
-$$
+$$f_{w,b}(x)=g(\vec{w}\cdot\vec{x}+b)=\frac{1}{1+e^{-(\vec{w}\cdot\vec{x}+b)}}$$
 
 也就是先計算 $\vec{w}\cdot\vec{x}+b$，再套用 **Sigmoid Function**。
 
