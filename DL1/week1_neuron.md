@@ -16,7 +16,10 @@
     $$f(x) = \max(0, x)$$
   * **圖形特徵**：在輸入值小於等於 0 的部分輸出為零，當輸入值大於 0 時則像直線一樣（斜率為 1）上升。
  
-  ![ReLU](https://upload.wikimedia.org/wikipedia/commons/c/c9/Ramp_function.svg)
+  <div style="background-color: #ffffff; padding: 15px; border-radius: 8px; display: inline-block;">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/c/c9/Ramp_function.svg" alt="ReLU Function" style="display: block;">
+</div>
+ 
 
 ### 3. 建構大型網路
 * **「樂高積木」概念**：大型類神經網路是藉由將許多單個神經元像樂高積木一樣堆疊、組合在一起而形成的。
