@@ -43,6 +43,8 @@
 * **局部最小值特性**：
     * **起始點**的不同可能會導致完全不同的結果（落入不同的山谷）。
     * 一旦演算法進入某個局部最小值，通常就會**停留在那裡**，而不會跳到另一個更低的山谷。
+ 
+![gradient_descet](https://upload.wikimedia.org/wikipedia/commons/6/68/Gradient_ascent_%28surface%29.png)
 
 ---
 
