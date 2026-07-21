@@ -76,10 +76,10 @@ $$a^{(i)} = \sigma(z^{(i)})$$
 ---
 
 ### 3. 整體參數更新 (Parameter Update)
-使用所有樣本的**平均梯度**更新一次參數：
-$$w_1 := w_1 - \alpha \cdot dw_1$$
-$$w_2 := w_2 - \alpha \cdot dw_2$$
-$$b := b - \alpha \cdot db$$
+使用所有樣本的**平均梯度**更新一次參數：<br>
+$$w_1 := w_1 - \alpha \cdot dw_1$$<br>
+$$w_2 := w_2 - \alpha \cdot dw_2$$<br>
+$$b := b - \alpha \cdot db$$<br>
 
 > **注意**：上述完整流程僅代表梯度下降的「**一步（One Step）**」，需重複執行多次直到成本函數 $J$ 收斂。
 
