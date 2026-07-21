@@ -49,7 +49,8 @@ $$\frac{dJ}{da} = \frac{dJ}{dv} \cdot \frac{dv}{da}$$
 | 變數 | 導數符號 | 數學表示式 | 具體推導與計算過程 | 計算結果 |
 | :--- | :--- | :--- | :--- | :--- |
 | **$v$** | `dv` | $\frac{dJ}{dv}$ | 若 $v$ 增加 $0.001$，$J$ 增加 $0.003$（3倍），故 $\frac{dJ}{dv} = 3$ | **3** |
-| **$a$** | `da` | $\frac{dJ}{da}$ | 因 $v = a + u$，$\frac{dv}{da} = 1$。由連鎖律：$da = dv \times \frac{dv}{da} = 3 \times 1$ | **3** |
+| **$a$** | `da` | $\frac{dJ}{da}$ | 因 $v = a + u$，$\frac{dv}{da} = 1$。由連鎖律：
+$da = dv \times \frac{dv}{da} = 3 \times 1$ | **3** |
 | **$u$** | `du` | $\frac{dJ}{du}$ | 因 $v = a + u$，$\frac{dv}{du} = 1$。由連鎖律：$du = dv \times \frac{dv}{du} = 3 \times 1$ | **3** |
 | **$b$** | `db` | $\frac{dJ}{db}$ | 因 $u = bc$ 且 $c = 2$，$\frac{du}{db} = c = 2$。由連鎖律：$db = du \times \frac{du}{db} = 3 \times 2$ | **6** |
 | **$c$** | `dc` | $\frac{dJ}{dc}$ | 因 $u = bc$ 且 $b = 3$，$\frac{du}{dc} = b = 3$。由連鎖律：$dc = du \times \frac{du}{dc} = 3 \times 3$ | **9** |
