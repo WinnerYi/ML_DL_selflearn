@@ -46,14 +46,66 @@ $$\frac{dJ}{da} = \frac{dJ}{dv} \cdot \frac{dv}{da}$$
 
 基於上述範例（$J = 3v, v = a + u, u = bc$，且 $a = 5, b = 3, c = 2$），反向推導過程如下：
 
-| 變數 | 導數符號 | 數學表示式 | 具體推導與計算過程 | 計算結果 |
-| :--- | :--- | :--- | :--- | :--- |
-| **$v$** | `dv` | $\frac{dJ}{dv}$ | $v + 0.001 \rightarrow J + 0.003$ | **3** |
-| **$a$** | `da` | $\frac{dJ}{da}$ | $\frac{dv}{da} = 1 \implies da = 3 \times 1$ | **3** |
-| **$u$** | `du` | $\frac{dJ}{du}$ | $\frac{dv}{du} = 1 \implies du = 3 \times 1$ | **3** |
-| **$b$** | `db` | $\frac{dJ}{db}$ | $\frac{du}{db} = c = 2 \implies db = 3 \times 2$ | **6** |
-| **$c$** | `dc` | $\frac{dJ}{dc}$ | $\frac{du}{dc} = b = 3 \implies dc = 3 \times 3$ | **9** |
-
+<table>
+  <thead>
+    <tr>
+      <th>變數</th>
+      <th>導數符號</th>
+      <th>數學表示式</th>
+      <th>具體推導與計算過程</th>
+      <th>計算結果</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>$v$</b></td>
+      <td><code>dv</code></td>
+      <td>$\frac{dJ}{dv}$</td>
+      <td>若 $v$ 增加 $0.001$，$J$ 增加 $0.003$（3倍），故 $\frac{dJ}{dv} = 3$</td>
+      <td><b>3</b></td>
+    </tr>
+    <tr>
+      <td><b>$a$</b></td>
+      <td><code>da</code></td>
+      <td>$\frac{dJ}{da}$</td>
+      <td>
+        因 $v = a + u$，$\frac{dv}{da} = 1$。<br>
+        由連鎖律：$da = dv \times \frac{dv}{da} = 3 \times 1$
+      </td>
+      <td><b>3</b></td>
+    </tr>
+    <tr>
+      <td><b>$u$</b></td>
+      <td><code>du</code></td>
+      <td>$\frac{dJ}{du}$</td>
+      <td>
+        因 $v = a + u$，$\frac{dv}{du} = 1$。<br>
+        由連鎖律：$du = dv \times \frac{dv}{du} = 3 \times 1$
+      </td>
+      <td><b>3</b></td>
+    </tr>
+    <tr>
+      <td><b>$b$</b></td>
+      <td><code>db</code></td>
+      <td>$\frac{dJ}{db}$</td>
+      <td>
+        因 $u = bc$ 且 $c = 2$，$\frac{du}{db} = c = 2$。<br>
+        由連鎖律：$db = du \times \frac{du}{db} = 3 \times 2$
+      </td>
+      <td><b>6</b></td>
+    </tr>
+    <tr>
+      <td><b>$c$</b></td>
+      <td><code>dc</code></td>
+      <td>$\frac{dJ}{dc}$</td>
+      <td>
+        因 $u = bc$ 且 $b = 3$，$\frac{du}{dc} = b = 3$。<br>
+        由連鎖律：$dc = du \times \frac{du}{dc} = 3 \times 3$
+      </td>
+      <td><b>9</b></td>
+    </tr>
+  </tbody>
+</table>
 ---
 
 
