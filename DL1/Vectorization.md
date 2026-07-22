@@ -241,21 +241,7 @@ Z = np.dot(w.T, X) + b
 
 #### Step 2：Sigmoid
 
-$$
-\mathbf{A}
-=
-\sigma(\mathbf{Z})
-=
-\begin{bmatrix}
-a^{(1)}
-&
-a^{(2)}
-&
-\cdots
-&
-a^{(m)}
-\end{bmatrix}
-$$
+$$ \mathbf{A} = \sigma(\mathbf{Z}) = \begin{bmatrix} a^{(1)} & a^{(2)} & \cdots & a^{(m)} \end{bmatrix} $$
 
 維度：
 
