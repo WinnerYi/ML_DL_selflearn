@@ -164,16 +164,7 @@ $$
 
 ### 真實標籤
 
-$$
-\mathbf{Y}
-=
-\begin{bmatrix}
-y^{(1)} &
-y^{(2)} &
-\cdots &
-y^{(m)}
-\end{bmatrix}
-$$
+$$ \mathbf{Y} = \begin{bmatrix} y^{(1)} & y^{(2)} & \cdots & y^{(m)} \end{bmatrix} $$
 
 維度：
 
