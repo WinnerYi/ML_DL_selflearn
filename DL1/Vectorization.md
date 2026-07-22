@@ -53,7 +53,7 @@
 ### 1. 資料結構與矩陣維度定義
 設定資料集包含 $n_x$ 個特徵，以及 $m$ 個訓練樣本：
 
-* **輸入矩陣 $\mathbf{X}$**：維度為 $(n_x, m)$。將所有訓練樣本成列堆疊：
+* **輸入矩陣 $\mathbf{X}$**：維度為 $(n_x, m)$。將所有訓練樣本成列堆疊：<br>
 $$\mathbf{X} = $$
 $$\begin{bmatrix} \mid & \mid & & \mid \\ \mathbf{x}^{(1)} & \mathbf{x}^{(2)} & \dots & \mathbf{x}^{(m)} \\ \mid & \mid & & \mid \end{bmatrix}$$
 * **權重向量 $\mathbf{w}$**：維度為 $(n_x, 1)$。
