@@ -207,11 +207,7 @@ dw /= m
 
 #### Step 1：計算線性輸出
 
-$$
-\mathbf{Z}
-=
-\mathbf{w}^T\mathbf{X}+b
-$$
+$$ \mathbf{Z} = \mathbf{w}^T\mathbf{X}+b $$
 
 維度：
 
