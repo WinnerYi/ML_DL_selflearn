@@ -54,7 +54,8 @@
 設定資料集包含 $n_x$ 個特徵，以及 $m$ 個訓練樣本：
 
 * **輸入矩陣 $\mathbf{X}$**：維度為 $(n_x, m)$。將所有訓練樣本成列堆疊：
-$$\mathbf{X} = \begin{bmatrix} \mid & \mid & & \mid \\ \mathbf{x}^{(1)} & \mathbf{x}^{(2)} & \dots & \mathbf{x}^{(m)} \\ \mid & \mid & & \mid \end{bmatrix}$$
+$$\mathbf{X} = $$
+$$\begin{bmatrix} \mid & \mid & & \mid \\ \mathbf{x}^{(1)} & \mathbf{x}^{(2)} & \dots & \mathbf{x}^{(m)} \\ \mid & \mid & & \mid \end{bmatrix}$$
 * **權重向量 $\mathbf{w}$**：維度為 $(n_x, 1)$。
 * **偏差項 $b$**：實數（Scalar）。
 * **真實標籤 $\mathbf{Y}$**：維度為 $(1, m)$ 的列向量：
