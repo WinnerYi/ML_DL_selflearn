@@ -190,7 +190,7 @@ $$
 ```python
 dw = np.zeros((nx,1))
 
-dw += x_i * dz_i
+dw += x^(i) * dz^(i)
 
 dw /= m
 ```
