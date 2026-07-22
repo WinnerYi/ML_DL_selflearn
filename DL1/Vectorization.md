@@ -261,11 +261,7 @@ A = sigmoid(Z)
 
 #### Step 1：誤差
 
-$$
-dZ
-=
-A-Y
-$$
+$$ dZ = A-Y $$
 
 即
 
