@@ -103,23 +103,29 @@ $$
 \end{aligned}
 $$
 
-#### vCase 3: $(2,3)$ 矩陣 + $(2,1)$ 向量
+#### Case 3: $(2,3)$ 矩陣 + $(2,1)$ 向量
 
 $$
-\begin{bmatrix}
+\left[
+\begin{array}{ccc}
 1&2&3\\
 4&5&6
-\end{bmatrix}
+\end{array}
+\right]
 +
-\begin{bmatrix}
+\left[
+\begin{array}{c}
 100\\
 200
-\end{bmatrix}
+\end{array}
+\right]
 =
-\begin{bmatrix}
+\left[
+\begin{array}{ccc}
 101&102&103\\
 204&205&206
-\end{bmatrix}
+\end{array}
+\right]
 $$
 
 ---
