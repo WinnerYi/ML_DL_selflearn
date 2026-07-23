@@ -106,26 +106,10 @@ $$
 #### Case 3: $(2,3)$ 矩陣 + $(2,1)$ 向量
 
 $$
-\left[
-\begin{array}{ccc}
-1&2&3\\
-4&5&6
-\end{array}
-\right]
-+
-\left[
-\begin{array}{c}
-100\\
-200
-\end{array}
-\right]
-=
-\left[
-\begin{array}{ccc}
-101&102&103\\
-204&205&206
-\end{array}
-\right]
+\begin{bmatrix} 1&2&3\\ 4&5&6 \end{bmatrix} + \begin{bmatrix} 100\\ 200 \end{bmatrix} = \begin{bmatrix} 101&102&103\\ 204&205&206 \end{bmatrix}
+
+
+
 $$
 
 ---
