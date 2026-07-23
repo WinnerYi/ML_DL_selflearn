@@ -38,22 +38,85 @@
 > 註：上述廣播原則適用於所有元素級四則運算（加法 `+`、減法 `-`、乘法 `*`、除法 `/`）。
 
 ### 具體數值對照範例
+#### Case 1: $(4,1)$ 向量 + 純量 $100$
 
-#### Case 1: $(4, 1)$ 向量 + 純量 $100$
 $$
-\begin{bmatrix} 1 \\ 2 \\ 3 \\ 4 \end{bmatrix} + 100 \implies \begin{bmatrix} 1 \\ 2 \\ 3 \\ 4 \end{bmatrix} + \begin{bmatrix} 100 \\ 100 \\ 100 \\ 100 \end{bmatrix} = \begin{bmatrix} 101 \\ 102 \\ 103 \\ 104 \end{bmatrix}
+\begin{aligned}
+\begin{bmatrix}
+1\\
+2\\
+3\\
+4
+\end{bmatrix}
++100
+&=
+\begin{bmatrix}
+1\\
+2\\
+3\\
+4
+\end{bmatrix}
++
+\begin{bmatrix}
+100\\
+100\\
+100\\
+100
+\end{bmatrix} \\
+&=
+\begin{bmatrix}
+101\\
+102\\
+103\\
+104
+\end{bmatrix}
+\end{aligned}
 $$
 
-#### Case 2: $(2, 3)$ 矩陣 + $(1, 3)$ 向量
+#### Case 2: $(2,3)$ 矩陣 + $(1,3)$ 向量
+
 $$
-\begin{bmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \end{bmatrix} + \begin{bmatrix} 100 & 200 & 300 \end{bmatrix} \implies \begin{bmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \end{bmatrix} + \begin{bmatrix} 100 & 200 & 300 \\ 100 & 200 & 300 \end{bmatrix} = \begin{bmatrix} 101 & 202 & 303 \\ 104 & 205 & 306 \end{bmatrix}
+\begin{aligned}
+\begin{bmatrix}
+1&2&3\\
+4&5&6
+\end{bmatrix}
++
+\begin{bmatrix}
+100&200&300
+\end{bmatrix}
+&=
+\begin{bmatrix}
+1&2&3\\
+4&5&6
+\end{bmatrix}
++
+\begin{bmatrix}
+100&200&300\\
+100&200&300
+\end{bmatrix} \\
+&=
+\begin{bmatrix}
+101&202&303\\
+104&205&306
+\end{bmatrix}
+\end{aligned}
 $$
 
-#### Case 3: $(2, 3)$ 矩陣 + $(2, 1)$ 向量
-$$
-\begin{bmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \end{bmatrix} + \begin{bmatrix} 100 \\ 200 \end{bmatrix} \implies \begin{bmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \end{bmatrix} + \begin{bmatrix} 100 & 100 & 100 \\ 200 & 200 & 200 \end{bmatrix} = \begin{bmatrix} 101 & 102 & 103 \\ 204 & 205 & 206 \end{bmatrix}
-$$
+#### Case 3: $(2,3)$ 矩陣 + $(2,1)$ 向量
 
+$$ \begin{aligned} \begin{bmatrix} 1&2&3\\ 4&5&6 \end{bmatrix} + \begin{bmatrix} 100\\ 200 \end{bmatrix} &= \begin{bmatrix} 1&2&3\\ 4&5&6 \end{bmatrix} +
+\begin{bmatrix}
+100&100&100\\
+200&200&200
+\end{bmatrix} \\
+&=
+\begin{bmatrix}
+101&102&103\\
+204&205&206
+\end{bmatrix}
+\end{aligned}
+$$
 ---
 
 ## 4. 開發技巧與注意事項
