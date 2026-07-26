@@ -28,7 +28,7 @@ $$z = Wx + b \longrightarrow a = \sigma(z) \longrightarrow \mathcal{L}(a, y)$$
 誤差從第二層反向傳回第一層，需要乘以權重並結合激活函數的導數：
 * $dz^{[1]} = (W^{[2]})^T dz^{[2]} \odot g'^{[1]}(z^{[1]})$ 
   *(註： ⊙ 或 * 代表 Element-wise 元素對應相乘)*
-* $dW^{[1]} = dz^{[1]} \cdot x^T$ *(此處 $x$ 即為 $a^{[0]}$)*
+* $dW^{[1]} = dz^{[1]} \cdot x^T$ > **註：** 此處 $x$ 即為 $a^{[0]}$。
 * $db^{[1]} = dz^{[1]}$
 
 ---
