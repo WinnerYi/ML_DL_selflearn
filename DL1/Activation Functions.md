@@ -28,7 +28,7 @@ $$a^{[2]} = W_2 (W_1 x + b_1) + b_2 = (W_2 W_1) x + (W_2 b_1 + b_2)$$
 | **Sigmoid** | $\frac{1}{1 + e^{-z}}$ | $(0, 1)$ | $a(1 - a)$ | 輸出可視為機率，**僅建議用於二元分類的輸出層**。 | 當 $\|z\|$ 極大或極小時，斜率趨近於 $0$，會引發**梯度消失（Vanishing Gradient）**，嚴重減慢學習速度。 |
 | **tanh**<br>*(雙曲正切)* | $\frac{e^z - e^{-z}}{e^z + e^{-z}}$ <img src="https://upload.wikimedia.org/wikipedia/commons/c/cb/Activation_tanh.svg" alt="替代文字" width="300"> | $(-1, 1)$ | $1 - a^2$ | 為 Sigmoid 的縮放與平移版本，具**零中心化（Zero Mean）**特性，能讓下一層學習更容易。隱藏層效果**幾乎總是優於 Sigmoid**。 | 同樣存在 $\|z\|$ 極大或極小時**梯度消失**的問題。 |
 | **ReLU**<br>*(線性整流)* | $\max(0, z)$ <img src="https://upload.wikimedia.org/wikipedia/commons/f/fe/Activation_rectified_linear.svg" alt="替代文字" width="300">| $[0, \infty)$ | $g'(z)=0\ (z<0),\ 1\ (z>0),\ 0\text{ 或 }1\ (z=0)$ | **目前最受歡迎的預設首選**。當 $z > 0$ 時斜率恆為 $1$，無梯度消失問題，訓練速度遠快於 tanh 與 Sigmoid。 | 當 $z < 0$ 時，梯度恆為 $0$（神經元可能停止更新，即 Dying ReLU）。 |
-| **Leaky ReLU** | $\max(0.01z, z)$ | $(-\infty, \infty)$ | $0.01\ (z<0),\ 1\ (z>0),\ 0.01\text{ 或 }1\ (z=0)$ | 解決了 ReLU 在負值區域梯度為 $0$ 的問題，給予 $0.01$ 的微小斜率。 | 實務效果通常不錯，但整體普及度仍略遜於標準 ReLU。 |
+| **Leaky ReLU** | $\max(0.01z, z)$ <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Activation_prelu.svg" alt="替代文字" width="300"> | $(-\infty, \infty)$ | $0.01\ (z<0),\ 1\ (z>0),\ 0.01\text{ 或 }1\ (z=0)$ | 解決了 ReLU 在負值區域梯度為 $0$ 的問題，給予 $0.01$ 的微小斜率。 | 實務效果通常不錯，但整體普及度仍略遜於標準 ReLU。 |
 
 > **關於 $z = 0$ 時的導數說明：**
 > 在數學上，ReLU 與 Leaky ReLU 在 $z = 0$ 處不可微（導數未定義）。但在軟體實作中，實際採樣到 $z$ 恰好等於 $0$ 的機率極低，實務上將其導數隨機指定為 $0$、$0.01$ 或 $1$ 均不影響結果（這在優化理論中稱為**次梯度 Subgradient**），梯度下降法依然能正常運作。
