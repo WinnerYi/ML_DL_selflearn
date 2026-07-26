@@ -53,8 +53,10 @@ b = np.zeros((current_layer_size, 1))
 * **淺層網路**：對於只有 1~2 層隱藏層的淺層網路，乘以 `0.01` 通常運作得很好。
 * **深層網路（Deep Neural Networks）**：在訓練極深的神經網路時，單純乘以 `0.01` 可能不是最佳選擇，容易導致**梯度消失（Exploding/Vanishing Gradients）**問題。
 * **進階初始化方法**：
-  * **He Initialization**（適用於 ReLU）：$\text{std} = \sqrt{\frac{2}{n^{[l-1]}}}$
-  * **Xavier / Glorot Initialization**（適用於 tanh）：$\text{std} = \sqrt{\frac{1}{n^{[l-1]}}}$
+  * **He Initialization**（適用於 ReLU）：
+$$\text{std} = \sqrt{\frac{2}{n^{[l-1]}}}$$
+  * **Xavier / Glorot Initialization**（適用於 tanh）：
+$$\text{std} = \sqrt{\frac{1}{n^{[l-1]}}}$$
 
 ---
 
