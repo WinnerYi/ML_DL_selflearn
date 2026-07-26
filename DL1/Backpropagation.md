@@ -3,7 +3,9 @@
 ## 1. 基礎觀念：從邏輯迴歸（Logistic Regression）出發
 單層的邏輯迴歸是神經網路反向傳播的基石。
 
-* **前向傳播 (Forward)**：$z = Wx + b \longrightarrow a = \sigma(z) \longrightarrow \mathcal{L}(a, y)$
+* **前向傳播 (Forward)**：
+$$z = Wx + b \longrightarrow a = \sigma(z) \longrightarrow \mathcal{L}(a, y)$$
+
 * **反向傳播 (Backward)**：
   * $da = \frac{\partial \mathcal{L}}{\partial a} = -\frac{y}{a} + \frac{1-y}{1-a}$
   * $dz = \frac{\partial \mathcal{L}}{\partial z} = da \cdot \sigma'(z) = a - y$ *(核心極簡結果)*
