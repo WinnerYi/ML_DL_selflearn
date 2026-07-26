@@ -9,7 +9,7 @@
 在訓練神經網路時，將權重 $W$ 全部初始化為 0 會導致嚴重的問題。這與邏輯回歸（Logistic Regression）不同（邏輯回歸將權重設為零是可行的）。
 
 * **完全對稱問題**：若將所有權重 $W$ 初始化為零，同一層隱藏層中的所有單元（hidden units）將會計算出完全相同的激活值（Activation）。
-* **梯度完全相同**：在反向傳播（Backpropagation）過程中，由於對稱性，這些隱藏單元的梯度 $	ext{d}W$ 也會完全相同。
+* **梯度完全相同**：在反向傳播（Backpropagation）過程中，由於對稱性，這些隱藏單元的梯度 $\text{d}W$ 也會完全相同。
 * **無法學習不同特徵**：經過梯度下降（Gradient Descent）更新後，這些單元依然會保持對稱。無論訓練多久，多個隱藏單元實際上只相當於**一個單元**在運作，使得增加網路的寬度與深度失去意義。
 
 ---
@@ -53,8 +53,8 @@ b = np.zeros((current_layer_size, 1))
 * **淺層網路**：對於只有 1~2 層隱藏層的淺層網路，乘以 `0.01` 通常運作得很好。
 * **深層網路（Deep Neural Networks）**：在訓練極深的神經網路時，單純乘以 `0.01` 可能不是最佳選擇，容易導致**梯度消失（Exploding/Vanishing Gradients）**問題。
 * **進階初始化方法**：
-  * **He Initialization**（適用於 ReLU）：$	ext{std} = \sqrt{rac{2}{n^{[l-1]}}}$
-  * **Xavier / Glorot Initialization**（適用於 tanh）：$	ext{std} = \sqrt{rac{1}{n^{[l-1]}}}$
+  * **He Initialization**（適用於 ReLU）：$\text{std} = \sqrt{\frac{2}{n^{[l-1]}}}$
+  * **Xavier / Glorot Initialization**（適用於 tanh）：$\text{std} = \sqrt{\frac{1}{n^{[l-1]}}}$
 
 ---
 
