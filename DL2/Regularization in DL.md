@@ -19,7 +19,7 @@ L2 正則化是深度學習中最常用、最經典的正則化類型。
 ### 1. 邏輯回歸中的應用
 在原始成本函數 $J(w, b)$ 中加入權重 $w$ 的歐幾里德範數（Euclidean Norm）平方作為懲罰項：
 
-$$J(w, b) = rac{1}{m} \sum_{i=1}^{m} \mathcal{L}(\hat{y}^{(i)}, y^{(i)}) + rac{\lambda}{2m} \|w\|_2^2$$
+$$J(w, b) = rac{1}{m} \sum_{i=1}^{m} \mathcal{L}(\hat{y}^{(i)}, y^{(i)}) + \frac{\lambda}{2m} \|w\|_2^2$$
 
 其中：
 $$\|w\|_2^2 = w^T w = \sum_{j=1}^{n_x} w_j^2$$
@@ -40,7 +40,7 @@ $$\|w\|_2^2 = w^T w = \sum_{j=1}^{n_x} w_j^2$$
 ### 1. 定義與公式
 在成本函數中加入參數絕對值的和：
 
-$$J(w, b) = rac{1}{m} \sum_{i=1}^{m} \mathcal{L}(\hat{y}^{(i)}, y^{(i)}) + rac{\lambda}{m} \sum_{j=1}^{n_x} |w_j| = J_0 + rac{\lambda}{m} \|w\|_1$$
+$$J(w, b) = \frac{1}{m} \sum_{i=1}^{m} \mathcal{L}(\hat{y}^{(i)}, y^{(i)}) + \frac{\lambda}{m} \sum_{j=1}^{n_x} |w_j| = J_0 + \frac{\lambda}{m} \|w\|_1$$
 
 ### 2. 特性：權重稀疏化（Sparsity）
 - 使用 L1 正則化會導致權重矩陣變得**稀疏（Sparse）**，即 $W$ 中會有許多元素精確地變為 0。
@@ -83,7 +83,7 @@ ight]$$
 ight) W^{[l]} -  lpha (	ext{from backprop})$$
 
 ### 2. 直觀理解
-- 由於 $\left(1 - rac{ lpha \lambda}{m}
+- 由於 $\left(1 - \frac{ lpha \lambda}{m}
 ight)$ 是一個**略小於 1 的正數**，因此在每一次迭代更新前，權重矩陣都會先被「縮小（Decay）」一部分，再減去反向傳播得到的梯度。這就是 L2 正則化又被稱為權重衰減的原因。
 
 ---
@@ -112,6 +112,6 @@ ight)$ 是一個**略小於 1 的正數**，因此在每一次迭代更新前，
 - **常見錯誤**：若程式碼中只繪製了原始成本函數 $J_{	ext{original}}$，圖表可能會出現波動或無法保證單調遞減（Monotonically Decrease），從而誤判梯度下降過程有 Bug。
 
 ### 2. 實作檢查清單
-- [x] 是否在所有 $dW^{[l]}$ 計算中加上了 $rac{\lambda}{m} W^{[l]}$？
+- [x] 是否在所有 $dW^{[l]}$ 計算中加上了 $\frac{\lambda}{m} W^{[l]}$？
 - [x] 是否在計算總成本 $J$ 時加上了 $\frac{\lambda}{2m} \sum_l \|W^{[l]}\|_F^2$？
 - [x] Python 程式碼中變數名稱是否使用了 `lambd` 避免與關鍵字 `lambda` 衝突？
