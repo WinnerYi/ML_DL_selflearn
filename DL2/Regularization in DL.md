@@ -78,12 +78,10 @@ L2 正則化在梯度下降更新時呈現出的動態特性，被稱為「**權
 
 2. 帶入梯度下降更新公式：
    $$W^{[l]} \leftarrow W^{[l]} -  \alpha dW^{[l]}$$
-   $$W^{[l]} \leftarrow W^{[l]} -  \alpha \left[ (\text{from backprop}) + \frac{\lambda}{m} W^{[l]} 
-ight]$$
+   $$W^{[l]} \leftarrow W^{[l]} -  \alpha \left[ (\text{from backprop}) + \frac{\lambda}{m} W^{[l]} \right]$$
 
 3. 重組公式：
-   $$W^{[l]} \leftarrow \left(1 - \frac{ \alpha \lambda}{m}
-ight) W^{[l]} - \alpha (\text{from backprop})$$
+   $$W^{[l]} \leftarrow \left(1 - \frac{ \alpha \lambda}{m} \right) W^{[l]} - \alpha (\text{from backprop})$$
 
 ### 2. 直觀理解
 - 由於 $\left(1 - \frac{ \alpha \lambda}{m}\right)$ 是一個**略小於 1 的正數**，因此在每一次迭代更新前，權重矩陣都會先被「縮小（Decay）」一部分，再減去反向傳播得到的梯度。這就是 L2 正則化又被稱為權重衰減的原因。
