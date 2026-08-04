@@ -24,7 +24,7 @@ $$J(w, b) = \frac{1}{m} \sum_{i=1}^{m} \mathcal{L}(\hat{y}^{(i)}, y^{(i)}) + \fr
 其中：
 
 $$
-\|w\|_2^2 = w^T w = \sum_{j=1}^{n_x} w_j^2
+\lVert w \rVert_2^2 = w^T w = \sum_{j=1}^{n_x} w_j^2
 $$
 
 ### 2. 為何只針對 $W$ 而非 $b$？
