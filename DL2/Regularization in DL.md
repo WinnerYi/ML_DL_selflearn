@@ -68,38 +68,81 @@ $$\|W^{[l]}\|_F^2 = \sum_{i=1}^{n^{[l-1]}} \sum_{j=1}^{n^{[l]}} (W_{i, j}^{[l]})
 
 ---
 
-## 五、 權重衰減（Weight Decay）
+## 五、權重衰減（Weight Decay）
 
-L2 正則化在梯度下降更新時呈現出的動態特性，被稱為「**權重衰減**」。
+L2 正則化在梯度下降更新時呈現出的動態特性，被稱為**權重衰減（Weight Decay）**。
 
 ### 1. 梯度與更新邏輯
+
 1. 計算成本函數對權重矩陣 $W^{[l]}$ 的偏微分：
-$$
-dW^{[l]}
-=
-\frac{\partial J_{\text{data}}}{\partial W^{[l]}}
-+
-\frac{\lambda}{m}W^{[l]}
-$$
+
+   $$
+   dW^{[l]}
+   =
+   dW_{\text{backprop}}^{[l]}
+   +
+   \frac{\lambda}{m}W^{[l]}
+   $$
 
 2. 帶入梯度下降更新公式：
 
    $$
-W^{[l]}
-\leftarrow
-W^{[l]}
--
-\alpha
-\left(
-dW_{\text{backprop}}^{[l]}
-+
-\frac{\lambda}{m}W^{[l]}
-\right)
-$$
+   W^{[l]}
+   \leftarrow
+   W^{[l]}
+   -
+   \alpha dW^{[l]}
+   $$
+
+   代入 $dW^{[l]}$：
+
+   $$
+   W^{[l]}
+   \leftarrow
+   W^{[l]}
+   -
+   \alpha
+   \left(
+   dW_{\text{backprop}}^{[l]}
+   +
+   \frac{\lambda}{m}W^{[l]}
+   \right)
+   $$
 
 3. 重組公式：
-   
+
    $$
+   W^{[l]}
+   \leftarrow
+   \left(
+   1-\frac{\alpha\lambda}{m}
+   \right)
+   W^{[l]}
+   -
+   \alpha dW_{\text{backprop}}^{[l]}
+   $$
+
+### 2. 直觀理解
+
+- 由於
+
+  $$
+  \left(
+  1-\frac{\alpha\lambda}{m}
+  \right)
+  $$
+
+  是一個**略小於 1 的正數**，因此更新公式可以視為：在每一次梯度更新時，權重矩陣都會先乘上一個略小於 1 的縮放係數，再扣除反向傳播計算得到的梯度。
+
+- 因此，權重會在每次更新中逐漸縮小（Decay），這也是 **L2 正則化**又被稱為**權重衰減（Weight Decay）**的原因。
+
+### 3. 為什麼 Bias 不需要 Weight Decay？
+
+一般而言，**只有權重矩陣 $W$ 會加入 L2 正則化，偏置 $b$ 不會加入**，因此更新公式為：
+
+權重：
+
+$$
 W^{[l]}
 \leftarrow
 \left(
@@ -107,14 +150,20 @@ W^{[l]}
 \right)
 W^{[l]}
 -
-\alpha
-dW_{\text{backprop}}^{[l]}
+\alpha dW_{\text{backprop}}^{[l]}
 $$
 
-### 2. 直觀理解
-- 由於 $\left(1 - \frac{ lpha \lambda}{m}
-ight)$ 是一個**略小於 1 的正數**，因此在每一次迭代更新前，權重矩陣都會先被「縮小（Decay）」一部分，再減去反向傳播得到的梯度。這就是 L2 正則化又被稱為權重衰減的原因。
+偏置：
 
+$$
+b^{[l]}
+\leftarrow
+b^{[l]}
+-
+\alpha db^{[l]}
+$$
+
+原因是偏置的數量通常遠少於權重，而且偏置並不會增加模型的複雜度，因此對偏置進行正則化的效果通常很有限，所以實務上大多只對權重進行 L2 正則化。
 ---
 
 ## 六、 為什麼 L2 正則化能減少過擬合？（直覺解釋）
