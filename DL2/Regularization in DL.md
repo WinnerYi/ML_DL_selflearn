@@ -81,7 +81,7 @@ dW^{[l]}
 \frac{\partial J_{\text{data}}}{\partial W^{[l]}}
 +
 \frac{\lambda}{m}W^{[l]}
-$$
+   $$
 
 2. 帶入梯度下降更新公式：
 
