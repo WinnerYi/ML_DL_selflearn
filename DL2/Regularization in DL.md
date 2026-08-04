@@ -74,14 +74,21 @@ L2 正則化在梯度下降更新時呈現出的動態特性，被稱為「**權
 
 ### 1. 梯度與更新邏輯
 1. 計算成本函數對權重矩陣 $W^{[l]}$ 的偏微分：
-   $$dW^{[l]} = (	ext{from backprop}) + \frac{\lambda}{m} W^{[l]}$$
+   
+   $$
+dW^{[l]}
+=
+dW_{\text{backprop}}^{[l]}
++
+\frac{\lambda}{m}W^{[l]}
+$$
 
-2. 帶入梯度下降更新公式：
+3. 帶入梯度下降更新公式：
    $$W^{[l]} \leftarrow W^{[l]} -  lpha dW^{[l]}$$
    $$W^{[l]} \leftarrow W^{[l]} -  lpha \left[ (	ext{from backprop}) + \frac{\lambda}{m} W^{[l]} 
 ight]$$
 
-3. 重組公式：
+4. 重組公式：
    $$W^{[l]} \leftarrow \left(1 - \frac{ lpha \lambda}{m}
 ight) W^{[l]} -  lpha (	ext{from backprop})$$
 
