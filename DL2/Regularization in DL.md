@@ -19,7 +19,7 @@ L2 正則化是深度學習中最常用、最經典的正則化類型。
 ### 1. 邏輯回歸中的應用
 在原始成本函數 $J(w, b)$ 中加入權重 $w$ 的歐幾里德範數（Euclidean Norm）平方作為懲罰項：
 
-$$J(w, b) = rac{1}{m} \sum_{i=1}^{m} \mathcal{L}(\hat{y}^{(i)}, y^{(i)}) + \frac{\lambda}{2m} \|w\|_2^2$$
+$$J(w, b) = \frac{1}{m} \sum_{i=1}^{m} \mathcal{L}(\hat{y}^{(i)}, y^{(i)}) + \frac{\lambda}{2m} \|w\|_2^2$$
 
 其中：
 $$\|w\|_2^2 = w^T w = \sum_{j=1}^{n_x} w_j^2$$
