@@ -78,19 +78,39 @@ L2 正則化在梯度下降更新時呈現出的動態特性，被稱為「**權
    $$
 dW^{[l]}
 =
-dW_{\text{backprop}}^{[l]}
+\frac{\partial J_{\text{data}}}{\partial W^{[l]}}
 +
 \frac{\lambda}{m}W^{[l]}
 $$
 
-3. 帶入梯度下降更新公式：
-   $$W^{[l]} \leftarrow W^{[l]} -  lpha dW^{[l]}$$
-   $$W^{[l]} \leftarrow W^{[l]} -  lpha \left[ (	ext{from backprop}) + \frac{\lambda}{m} W^{[l]} 
-ight]$$
+2. 帶入梯度下降更新公式：
 
-4. 重組公式：
-   $$W^{[l]} \leftarrow \left(1 - \frac{ lpha \lambda}{m}
-ight) W^{[l]} -  lpha (	ext{from backprop})$$
+   $$
+W^{[l]}
+\leftarrow
+W^{[l]}
+-
+\alpha
+\left(
+dW_{\text{backprop}}^{[l]}
++
+\frac{\lambda}{m}W^{[l]}
+\right)
+$$
+
+3. 重組公式：
+   
+   $$
+W^{[l]}
+\leftarrow
+\left(
+1-\frac{\alpha\lambda}{m}
+\right)
+W^{[l]}
+-
+\alpha
+dW_{\text{backprop}}^{[l]}
+$$
 
 ### 2. 直觀理解
 - 由於 $\left(1 - \frac{ lpha \lambda}{m}
