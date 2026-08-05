@@ -64,12 +64,12 @@ $$z = w_1 x_1 + w_2 x_2 + \cdots + w_n x_n \quad (\text{暫不考慮偏置 } b)$
 
 #### ① He 初始化 (He Initialization / Kaiming Initialization)
 - **適用場景**：**ReLU** 及其變體激活函數。
-- **公式**：將權重的變異數設為 $\operatorname{Var}(W) = \frac{2}{n}$，即標準差乘以 $\sqrt{\frac{2}{n}}$。
+- **公式**：將權重的變異數設為 $\mathrm{Var}(W) = \frac{2}{n}$，即標準差乘以 $\sqrt{\frac{2}{n}}$。
 - **來源**：由 He et al. 提出，考慮到 ReLU 函數會將一半的輸入歸零（方差減半），因此乘數調整為 2。
 
 #### ② Xavier 初始化 (Xavier Initialization / Glorot Initialization)
 - **適用場景**：**tanh** 或 **Sigmoid** 激活函數。
-- **公式**：將權重的變異數設為 $\operatorname{Var}(W) = \frac{1}{n}$，即標準差乘以 $\sqrt{\frac{1}{n}}$。
+- **公式**：將權重的變異數設為 $\mathrm{Var}(W) = \frac{1}{n}$，即標準差乘以 $\sqrt{\frac{1}{n}}$。
 - **備註**：另有 Bengio 等人提出的變形公式（如考慮輸入與輸出神經元數 $\frac{2}{n_{in} + n_{out}}$），有時也會在論文中看到。
 
 ### 4. 初始化作為超參數 (Hyperparameter)
