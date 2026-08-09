@@ -114,7 +114,7 @@ $$(1 - \epsilon)^{\frac{1}{\epsilon}}  pprox \frac{1}{e}  pprox 0.34 \sim 0.35$$
 
 以 $\beta = 0.98$ 為例：
 * **第 1 天 $t=1$**：
-* 
+
 $$
 v_1 = 0.98 v_0 + 0.02 \theta_1 = 0.98(0) + 0.02 \theta_1 = 0.02 \theta_1
 $$
