@@ -33,7 +33,7 @@ $$\alpha = \frac{1}{1 + \mathtt{decay\_rate} \times \mathtt{epoch\_num}} \alpha_
   * Epoch 4: $\alpha = 0.04$
 
 #### (2) 指數衰減 (Exponential Decay)
-$$\alpha = 0.95^{\text{epoch\_num}} \times \alpha_0$$
+$$\alpha = 0.95^{\mathtt{epoch\_num}} \times \alpha_0$$
 * 使用小於 1 的常數（如 0.95）作為底數，使學習率隨 Epoch 增加呈指數級快速下降。
 
 #### (3) 平方根衰減 (Square Root Decay)
