@@ -26,7 +26,7 @@
 #### (1) 基礎衰減 (Standard Decay)
 $$\alpha = \frac{1}{1 + \mathtt{decay\_rate} \times \mathtt{epoch\_num}} \alpha_0$$
 * **超參數**$:\alpha_0$（初始學習率）、$\mathtt{decay\_rate}$（衰減率，控制衰減速度）。
-* **計算範例**（若 $\alpha_0 = 0.2$ 且 $\text{decay\_rate} = 1$）：
+* **計算範例**（若 $\alpha_0 = 0.2$ 且 $\mathtt{decay\_rate} = 1$）：
   * Epoch 1: $\alpha = 0.1$
   * Epoch 2: $\alpha \approx 0.67 \times \alpha_0 = 0.133$（逐字稿原始數值標示為 $0.67$）
   * Epoch 3: $\alpha = 0.05$（即 $\frac{0.2}{1 + 3} = 0.05$）
