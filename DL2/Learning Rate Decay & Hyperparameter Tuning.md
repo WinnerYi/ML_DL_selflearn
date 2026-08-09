@@ -61,7 +61,7 @@ $$\alpha = \frac{\text{constant}}{\sqrt{\mathtt{epoch\_num}}} \alpha_0 \quad \te
 | **第一優先（最重要）** | 學習率 $\alpha$ (Learning Rate) | 最關鍵、必須優先調校的超參數 |
 | **第二優先（次要）** | 動量項 $\beta$ (Momentum)<br>Mini-batch 大小<br>隱藏單元數量 (Hidden units) | $\beta$ 實務預設值通常為 0.9；Mini-batch 用於優化計算效率 |
 | **第三優先（再次之）** | 神經網路層數 (Number of layers)<br>學習率衰減 (Learning Rate Decay) | 有時會帶來顯著影響，但優先度較後 |
-| **幾乎無需調整** | Adam 最佳化超參數 ($\beta_1, \beta_2, \epsilon$) | 直接採用預設值$:\beta_1=0.9, \beta_2=0.999, \epsilon=10^{-8}$ |
+| **幾乎無需調整** | Adam 最佳化超參數 ($\beta_1, \beta_2, \epsilon$) | 直接採用預設值 $:\beta_1=0.9, \beta_2=0.999, \epsilon=10^{-8}$ |
 
 > 💡 **備註**：此分級為實務經驗總結，非絕對規則，不同領域與經驗可能略有差異。
 
