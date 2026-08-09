@@ -120,6 +120,6 @@ $$b = b - \alpha \frac{v_{db}^{\text{corrected}}}{\sqrt{s_{db}^{\text{corrected}
 
 ### 4. 命名由來
 * **Adam** 全名為 **Adaptive Moment Estimation**（自適應矩估計）。
-* **第一矩（First Moment）**：$\beta_1$ 用於計算導數的平均值。
-* **第二矩（Second Moment）**：$\beta_2$ 用於計算導數平方的指數加權平均。
+* **第一矩（First Moment）** $:\beta_1$ 用於計算導數的平均值。
+* **第二矩（Second Moment）** $:\beta_2$ 用於計算導數平方的指數加權平均。
 * **自適應**：演算法會自適應地利用這兩個矩來調整學習步長，因而得名。
