@@ -37,7 +37,7 @@ $$\alpha = 0.95^{\mathtt{epoch\_num}} \times \alpha_0$$
 * 使用小於 1 的常數（如 0.95）作為底數，使學習率隨 Epoch 增加呈指數級快速下降。
 
 #### (3) 平方根衰減 (Square Root Decay)
-$$\alpha = \frac{\text{constant}}{\sqrt{\text{epoch\_num}}} \alpha_0 \quad \text{或} \quad \alpha = \frac{\text{constant}}{\sqrt{t}} \alpha_0$$
+$$\alpha = \frac{\text{constant}}{\sqrt{\mathtt{epoch\_num}}} \alpha_0 \quad \text{或} \quad \alpha = \frac{\text{constant}}{\sqrt{t}} \alpha_0$$
 * 學習率與時間（Epoch 數或 mini-batch 編號 $t$）的平方根成反比。
 
 #### (4) 離散階梯式衰減 (Discrete Staircase Decay)
