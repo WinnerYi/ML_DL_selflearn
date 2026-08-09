@@ -24,7 +24,7 @@
 > **註**：在實作中，一個 「Epoch」 代表完整遍歷一次訓練數據。
 
 #### (1) 基礎衰減 (Standard Decay)
-$$\alpha = \frac{1}{1 + \text{decay\_rate} \times \text{epoch\_num}} \alpha_0$$
+$$\alpha = \frac{1}{1 + \text{decay_rate} \times \text{epoch_num}} \alpha_0$$
 * **超參數**：$\alpha_0$（初始學習率）、$\text{decay\_rate}$（衰減率，控制衰減速度）。
 * **計算範例**（若 $\alpha_0 = 0.2$ 且 $\text{decay\_rate} = 1$）：
   * Epoch 1: $\alpha = 0.1$
