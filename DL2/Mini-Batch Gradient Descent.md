@@ -60,7 +60,7 @@
 
 3. **計算損失與成本 (Cost Function)**：
    - 計算該 mini-batch 的成本 $J^{\{t\}}$：
-     $$J^{\{t\}} = rac{1}{1000} \sum_{i=1}^{1000} \mathcal{L}(\hat{y}^{(i)}, y^{(i)}) + 	ext{正規化項 (Regularization term)}$$
+     $$J^{\{t\}} = \frac{1}{1000} \sum_{i=1}^{1000} \mathcal{L}(\hat{y}^{(i)}, y^{(i)}) + 	ext{正規化項 (Regularization term)}$$
    - *註：此處的損失與正規化計算僅針對當前 mini-batch $X^{\{t\}}, Y^{\{t\}}$ 中的樣本。*
 
 4. **反向傳播 (Backpropagation) 與參數更新**：
