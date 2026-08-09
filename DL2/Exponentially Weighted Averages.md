@@ -118,7 +118,7 @@ $$(1 - \epsilon)^{\frac{1}{\epsilon}}  pprox \frac{1}{e}  pprox 0.34 \sim 0.35$$
   若第一天實際溫度 $	heta_1 = 40^\circ	\text{F}$，則估計值 $v_1 = 0.02 \times 40 = 0.8$，遠低於實際數值。
 * **第 2 天 $t=2$**：
 $$
-v_2 = 0.98 v_1 + 0.02 \theta_2 = 0.98(0.02 	heta_1) + 0.02 \theta_2 = 0.0196 \theta_1 + 0.02 theta_2 
+v_2 = 0.98 v_1 + 0.02 \theta_2 = 0.98(0.02 \theta_1) + 0.02 \theta_2 = 0.0196 \theta_1 + 0.02 theta_2 
 $$
   計算出的 $v_2$ 依然嚴重低於真實數值。
 
