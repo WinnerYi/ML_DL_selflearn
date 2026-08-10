@@ -163,9 +163,9 @@ BN 對優化（Optimization）最實質的貢獻之一，在於控制了激活�
 | 方法 | 統計計算方式 | 是否依賴 Batch Size ($N$) | 常見應用場景 |
 | :--- | :--- | :---: | :--- |
 | **BatchNorm (BN)** | 對 Batch ($N$) / Feature（或 Channel+Spatial $H,W$）求統計值 | **是 ($\checkmark$)** | CNN、一般視覺模型 |
-| **LayerNorm (LN)** | 對單一樣本的所有 Feature（或 Channels）求統計值 | **否 ($	imes$)** | Transformer、NLP、RNN |
-| **InstanceNorm (IN)** | 對單一樣本、單一 Channel 的 Spatial ($H,W$) 求統計值 | **否 ($	imes$)** | 圖像風格轉換 (Style Transfer) |
-| **GroupNorm (GN)** | 將 Channels 分組，對單一樣本組內的 Channel+Spatial 求統計值 | **否 ($	imes$)** | 小 Batch Size 下的 CNN 訓練/檢測 |
+| **LayerNorm (LN)** | 對單一樣本的所有 Feature（或 Channels）求統計值 | **否 ($\times$)** | Transformer、NLP、RNN |
+| **InstanceNorm (IN)** | 對單一樣本、單一 Channel 的 Spatial ($H,W$) 求統計值 | **否 ($\times$)** | 圖像風格轉換 (Style Transfer) |
+| **GroupNorm (GN)** | 將 Channels 分組，對單一樣本組內的 Channel+Spatial 求統計值 | **否 ($\times$)** | 小 Batch Size 下的 CNN 訓練/檢測 |
 
 ### 關鍵對比總結：
 * **BatchNorm 依賴 Batch：** 若 Mini-batch 太小（例如 $N=2$ 或 $1$），估算出的均值與變異數極不準確，BN 效能會急劇下降。
