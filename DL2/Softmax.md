@@ -91,7 +91,7 @@ $$\mathcal{L}(\hat{y}, y) = -\sum_{j=1}^{C} y_j \log \hat{y}_j$$
 $$\mathcal{L}(\hat{y}, y) = -\log \hat{y}_1$$
 
 ### 統計學意義與 MLE
-從**最大似然估計（Maximum Likelihood Estimation, MLE）**的角度來看，最小化交叉熵損失等同於最大化正確類別的觀測機率。當預測值 $\hat{y}_1$ 越接近 1（即模型認為這是一張貓的可能性越高），$\log \hat{y}_1$ 就越接近 0，損失隨之降至最低。
+從**最大似然估計（Maximum Likelihood Estimation, MLE）**的角度來看，最小化交叉熵損失等同於最大化正確類別的觀測機率。當預測值 $\hat{y}_1$ 越接近 1（即模型認為這是一張貓的可能性越高 $,\log \hat{y}_1$ 就越接近 0，損失隨之降至最低。
 
 全體 $m$ 個訓練樣本的總成本函數 $J$ 則是所有樣本損失的平均：
 $$J(W, b) = \frac{1}{m} \sum_{i=1}^{m} \mathcal{L}(\hat{y}^{(i)}, y^{(i)})$$
