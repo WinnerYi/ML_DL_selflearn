@@ -34,7 +34,7 @@
 如果我們強制隱藏層的輸出分布永遠是均值為 $0$、變異數為 $1$，在遇到如 Sigmoid 或 Tanh 等啟用函數時，會產生嚴重的問題：
 
 * **非線性能力喪失的危機：** Sigmoid 函數在 $0$ 附近的區間幾乎是線性的。如果 $z$ 被強制限縮在均值 $0$、變異數 $1$ 的標準分布內，所有的啟用值都會被擠壓在該函數的中央線性區域，導致神經網路失去多層非線性擬合的能力。
-* **恆等映射（Identity Function）的保留：** 當模型學習出 $\gamma = \sqrt{\sigma^2 + \epsilon}$ 且 $ eta = \mu$ 時，帶入上述公式會發現 $\silde{z}^{(i)}$ 會完全還原為原始的 $z^{(i)}$。這代表這四個正規化公式允許模型在必要時主動撤銷正規化，將主導權交還給梯度更新，從而確保網路能靈活選擇最適合的非線性分布範圍。
+* **恆等映射（Identity Function）的保留：** 當模型學習出 $\gamma = \sqrt{\sigma^2 + \epsilon}$ 且 $ eta = \mu$ 時，帶入上述公式會發現 $\tilde{z}^{(i)}$ 會完全還原為原始的 $z^{(i)}$。這代表這四個正規化公式允許模型在必要時主動撤銷正規化，將主導權交還給梯度更新，從而確保網路能靈活選擇最適合的非線性分布範圍。
 
 ---
 
@@ -45,9 +45,9 @@
 * **常規神經網路計算：** 
   $$x \to z = W a + b \to a = g(z)$$
 * **引入 Batch Norm 後計算：** 
-  $$z \to \text{Batch Norm (BN)} \to \silde{z} \to a = g(\silde{z})$$
+  $$z \to \text{Batch Norm (BN)} \to \tilde{z} \to a = g(\tilde{z})$$
 
-亦即，Batch Norm 是對啟用前的 $z$ 值進行正規化，再將得到的 $\silde{z}$ 送入啟用函數 $g(\cdot)$ 得到 $a$
+亦即，Batch Norm 是對啟用前的 $z$ 值進行正規化，再將得到的 $\tilde{z}$ 送入啟用函數 $g(\cdot)$ 得到 $a$
 
 ---
 
@@ -57,14 +57,14 @@
 
 1. **數學原理：** 因為 $z^{[l]} = W^{[l]} a^{[l-1]} + b^{[l]}$，而在 Batch Norm 的第一步中，我們會減去該 Mini-batch 的均值 $\mu$。
 2. **抵消效應：** 不論我們在 $z$ 上加上任何常數 $b^{[l]}$，在計算均值並執行減法（$z - \mu$）時，這個常數都會被完全減去而抵消。
-3. **替代機制：** 原先偏置項 $b^{[l]}$ 的「控制平移/偏置」功能，已完全由 Batch Norm 運算中的可學習平移參數 $ eta^{[l]}$ 所取代。
+3. **替代機制：** 原先偏置項 $b^{[l]}$ 的「控制平移/偏置」功能，已完全由 Batch Norm 運算中的可學習平移參數 $\beta^{[l]}$ 所取代。
 
 ---
 
 ### 3. 參數維度與 Mini-batch 更新
 
 * **參數維度：** 若層 $l$ 的隱藏單元數為 $n^{[l]}$，則該層的 $z^{[l]}$ 維度為 $(n^{[l]}, 1)$。因此，該層的 $\gamma^{[l]}$ 與 $ eta^{[l]}$ 的維度同樣為 $(n^{[l]}, 1)$，它們與每一隱藏單元一一對應。
-* **訓練更新步驟：** 在每個 Mini-batch 的迭代中，執行前向傳播（Forward Prop），在各隱藏層將 $z^{[l]}$ 替換為經由該 Mini-batch 計算出的 $\silde{z}^{[l]}$：
+* **訓練更新步驟：** 在每個 Mini-batch 的迭代中，執行前向傳播（Forward Prop），在各隱藏層將 $z^{[l]}$ 替換為經由該 Mini-batch 計算出的 $\tilde{z}^{[l]}$：
   1. 計算前向傳播，得到 $z^{[l]}$。
   2. 利用當前 Mini-batch 計算 $\mu$ 與 $\sigma^2$，求得 $	ilde{z}^{[l]}$。
   3. 利用反向傳播（Backprop）計算梯度 $dW^{[l]}, d\gamma^{[l]}, d eta^{[l]}$（此時無 $db^{[l]}$ 梯度）。
@@ -124,9 +124,9 @@
 
 當神經網路接收到一個測試樣本時，在該隱藏層 $l$：
 
-1. 直接使用訓練期間估算出的全局指數加權平均均值 $\mu_{	ext{running}}$ 與變異數 $\sigma^2_{	ext{running}}$。
+1. 直接使用訓練期間估算出的全局指數加權平均均值 $\mu_{	ext{running}}$ 與變異數 $\sigma^2_{\text{running}}$。
 2. **計算測試標準化值：**
-   $$z_{	ext{norm}} = rac{z - \mu_{	ext{running}}}{\sqrt{\sigma^2_{	ext{running}} + \epsilon}}$$
-3. 利用訓練好的學習參數 $\gamma$ 與 $ eta$，**計算最終的啟用前輸入值：**
-   $$	ilde{z} = \gamma z_{	ext{norm}} +  eta$$
-4. 將 $	ilde{z}$ 送入啟用函數 $g(	ilde{z})$ 得到啟用值 $a$。
+   $$z_{	ext{norm}} = \frac{z - \mu_{\text{running}}}{\sqrt{\sigma^2_{\text{running}} + \epsilon}}$$
+3. 利用訓練好的學習參數 $\gamma$ 與 $\beta$，**計算最終的啟用前輸入值：**
+   $$\tilde{z} = \gamma z_{\text{norm}} + \beta$$
+4. 將 $\tilde{z}$ 送入啟用函數 $g(\tilde{z})$ 得到啟用值 $a$。
