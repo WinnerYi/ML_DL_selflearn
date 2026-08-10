@@ -15,7 +15,7 @@
    此公式在單一 Mini-batch 內對所有樣本的 $z$ 值求算算術平均數。
 
 2. **計算 Mini-batch 變異數（Variance）：**
-   $$\sigma^2 = rac{1}{m} \sum_{i=1}^{m} (z^{(i)} - \mu)^2$$
+   $$\sigma^2 = \frac{1}{m} \sum_{i=1}^{m} (z^{(i)} - \mu)^2$$
    此處對 $z$ 值進行元素級（Element-wise）的平方偏差計算。
 
 3. **進行標準化（Standardization / Normalize）：**
@@ -24,7 +24,7 @@
    * **$\epsilon$（Epsilon）的作用：** 這是一個極小的正數常數（置於分母中），主要用於數值穩定性（Numerical Stability），防止變異數 $\sigma^2$ 恰好為 $0$ 時導致除以零的錯誤。
 
 4. **縮放與平移（Rescale and Shift）：**
-   $$\silde{z}^{(i)} = \gamma z_{\text{norm}}^{(i)} + \beta$$
+   $$\tilde{z}^{(i)} = \gamma z_{\text{norm}}^{(i)} + \beta$$
    為了不限制隱藏層只能使用「均值 0、變異數 1」的分布，我們引入了兩個**可學習參數** $\gamma$ 和 $\beta$。
 
 ---
