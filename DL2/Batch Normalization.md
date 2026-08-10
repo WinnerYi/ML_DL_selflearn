@@ -34,7 +34,7 @@
 如果我們強制隱藏層的輸出分布永遠是均值為 $0$、變異數為 $1$，在遇到如 Sigmoid 或 Tanh 等啟用函數時，會產生嚴重的問題：
 
 * **非線性能力喪失的危機：** Sigmoid 函數在 $0$ 附近的區間幾乎是線性的。如果 $z$ 被強制限縮在均值 $0$、變異數 $1$ 的標準分布內，所有的啟用值都會被擠壓在該函數的中央線性區域，導致神經網路失去多層非線性擬合的能力。
-* **恆等映射（Identity Function）的保留：** 當模型學習出 $\gamma = \sqrt{\sigma^2 + \epsilon}$ 且 $ eta = \mu$ 時，帶入上述公式會發現 $\tilde{z}^{(i)}$ 會完全還原為原始的 $z^{(i)}$。這代表這四個正規化公式允許模型在必要時主動撤銷正規化，將主導權交還給梯度更新，從而確保網路能靈活選擇最適合的非線性分布範圍。
+* **恆等映射（Identity Function）的保留：** 當模型學習出 $\gamma = \sqrt{\sigma^2 + \epsilon}$ 且 $\beta = \mu$ 時，帶入上述公式會發現 $\tilde{z}^{(i)}$ 會完全還原為原始的 $z^{(i)}$。這代表這四個正規化公式允許模型在必要時主動撤銷正規化，將主導權交還給梯度更新，從而確保網路能靈活選擇最適合的非線性分布範圍。
 
 ---
 
@@ -58,16 +58,30 @@
 1. **數學原理：** 因為 $z^{[l]} = W^{[l]} a^{[l-1]} + b^{[l]}$，而在 Batch Norm 的第一步中，我們會減去該 Mini-batch 的均值 $\mu$。
 2. **抵消效應：** 不論我們在 $z$ 上加上任何常數 $b^{[l]}$，在計算均值並執行減法（$z - \mu$）時，這個常數都會被完全減去而抵消。
 3. **替代機制：** 原先偏置項 $b^{[l]}$ 的「控制平移/偏置」功能，已完全由 Batch Norm 運算中的可學習平移參數 $\beta^{[l]}$ 所取代。
+4. **注意事項：** 上述「Bias 冗餘」僅適用於 `Linear / Conv -> BN` 直接相連的結構。若是 `Linear -> ReLU -> BN` 等非直接相連順序，則不能用同樣理由說明 bias 可以直接消除。
 
 ---
 
-### 3. 參數維度與 Mini-batch 更新
+### 3. 卷積神經網路（CNN）中的 Batch Normalization
 
-* **參數維度：** 若層 $l$ 的隱藏單元數為 $n^{[l]}$，則該層的 $z^{[l]}$ 維度為 $(n^{[l]}, 1)$。因此，該層的 $\gamma^{[l]}$ 與 $ eta^{[l]}$ 的維度同樣為 $(n^{[l]}, 1)$，它們與每一隱藏單元一一對應。
+在全連接層（FC）中，BN 是針對各特徵單元獨立求 Mini-batch 均值；而在 CNN 中，BN 的運算邏輯隨 spatial 結構進行了調整：
+
+* **特徵張量維度：** 給定輸入特徵圖張量 $Z \in \mathbb{R}^{N \times C \times H \times W}$（$N$: Batch size, $C$: Channels, $H$: Height, $W$: Width）。
+* **Channel-wise 統計：** CNN 中的 BN 會對**每一個 Channel 分別計算** mean 與 variance。亦即，將同一 Channel 內跨 Batch ($N$)、跨空間高度 ($H$) 與寬度 ($W$) 的所有數值視為同一母體：
+  $$\mu_c = \frac{1}{N H W} \sum_{n=1}^{N} \sum_{h=1}^{H} \sum_{w=1}^{W} z_{n,c,h,w}$$
+  $$\sigma_c^2 = \frac{1}{N H W} \sum_{n=1}^{N} \sum_{h=1}^{H} \sum_{w=1}^{W} (z_{n,c,h,w} - \mu_c)^2$$
+* **參數維度：** 因為統計是跨 $(N, H, W)$ 進行的，所以每一個 Channel 共享同一組縮放與平移參數，即：
+  $$\gamma, \beta \in \mathbb{R}^C$$
+
+---
+
+### 4. 參數維度與 Mini-batch 更新
+
+* **參數維度：** 若層 $l$ 的隱藏單元數為 $n^{[l]}$，則該層的 $z^{[l]}$ 維度為 $(n^{[l]}, 1)$。因此，該層的 $\gamma^{[l]}$ 與 $\beta^{[l]}$ 的維度同樣為 $(n^{[l]}, 1)$，它們與每一隱藏單元一一對應。
 * **訓練更新步驟：** 在每個 Mini-batch 的迭代中，執行前向傳播（Forward Prop），在各隱藏層將 $z^{[l]}$ 替換為經由該 Mini-batch 計算出的 $\tilde{z}^{[l]}$：
   1. 計算前向傳播，得到 $z^{[l]}$。
   2. 利用當前 Mini-batch 計算 $\mu$ 與 $\sigma^2$，求得 $	ilde{z}^{[l]}$。
-  3. 利用反向傳播（Backprop）計算梯度 $dW^{[l]}, d\gamma^{[l]}, d eta^{[l]}$（此時無 $db^{[l]}$ 梯度）。
+  3. 利用反向傳播（Backprop）計算梯度 $dW^{[l]}, d\gamma^{[l]}, d\beta^{[l]}$（此時無 $db^{[l]}$ 梯度）。
   4. 使用梯度下降（或結合 Momentum、RMSprop、Adam 等優化器）更新參數：
      $$W^{[l]} \leftarrow W^{[l]} -  lpha \cdot dW^{[l]}$$
      $$\beta^{[l]} \leftarrow \beta^{[l]} - \alpha \cdot d\beta^{[l]}$$
@@ -92,7 +106,18 @@
 
 ---
 
-### 3. Mini-batch 帶來的輕微「正則化（Regularization）噪聲效應」
+### 3. BN 與 Learning Rate（學習率容忍度）
+
+BN 對優化（Optimization）最實質的貢獻之一，在於控制了激活值的尺度（Activation Scale），使梯度更新更加平穩：
+
+* **穩定優化軌跡：** BN 往往可以提高模型對 Learning Rate 的容忍度，使訓練過程可以使用相對較大的 Learning Rate。
+* **直覺邏輯：**
+  $$\text{BN} \to \text{更穩定的 Optimization} \to \text{可以使用較積極的 Learning Rate}$$
+* **重要觀念澄清：** 這並不代表有了 BN 就可以無限制地提高 Learning Rate；而是 BN 降低了因為過大學習率導致梯度爆炸或數值不穩定的風險。
+
+---
+
+### 4. Mini-batch 帶來的輕微「正則化（Regularization）噪聲效應」
 
 * **噪聲的來源：** 因為均值 $\mu$ 和變異數 $\sigma^2$ 是在單個 Mini-batch（如 64、128 或 256 個樣本）上估算，而非整個數據集，因此這兩個估算值本身帶有採樣噪聲（Noise）。
 * **噪聲的傳播：** 在將 $z$ 轉換為 $	ilde{z}$ 的過程中，這種微小的噪聲會伴隨縮放與平移注入到隱藏層的啟用值中。
@@ -130,3 +155,49 @@
 3. 利用訓練好的學習參數 $\gamma$ 與 $\beta$，**計算最終的啟用前輸入值：**
    $$\tilde{z} = \gamma z_{\text{norm}} + \beta$$
 4. 將 $\tilde{z}$ 送入啟用函數 $g(\tilde{z})$ 得到啟用值 $a$。
+
+## 五、 各種 Normalization 技術比較（BN vs. LN vs. IN vs. GN）
+
+不同的正規化方法主要差在**沿著張量的哪些維度計算 mean 與 variance**。以下為常見的正規化架構對比：
+
+| 方法 | 統計計算方式 | 是否依賴 Batch Size ($N$) | 常見應用場景 |
+| :--- | :--- | :---: | :--- |
+| **BatchNorm (BN)** | 對 Batch ($N$) / Feature（或 Channel+Spatial $H,W$）求統計值 | **是 ($\checkmark$)** | CNN、一般視覺模型 |
+| **LayerNorm (LN)** | 對單一樣本的所有 Feature（或 Channels）求統計值 | **否 ($	imes$)** | Transformer、NLP、RNN |
+| **InstanceNorm (IN)** | 對單一樣本、單一 Channel 的 Spatial ($H,W$) 求統計值 | **否 ($	imes$)** | 圖像風格轉換 (Style Transfer) |
+| **GroupNorm (GN)** | 將 Channels 分組，對單一樣本組內的 Channel+Spatial 求統計值 | **否 ($	imes$)** | 小 Batch Size 下的 CNN 訓練/檢測 |
+
+### 關鍵對比總結：
+* **BatchNorm 依賴 Batch：** 若 Mini-batch 太小（例如 $N=2$ 或 $1$），估算出的均值與變異數極不準確，BN 效能會急劇下降。
+* **LayerNorm 不依賴 Batch：** Transformer 等序列模型（輸入長度變動大且 Batch size 有限）中，LayerNorm 表現遠比 BatchNorm 穩定，因此 Transformer 普遍選擇使用 LayerNorm。
+
+---
+
+
+## 六、 進階部署優化：BatchNorm Folding（算子融合）
+
+在模型訓練完成並準備部署進行推理（Inference / Deployment）時，推導可知 BN 運算可以完全融合（Fuse）到前一層的線性層（Linear 或 Conv）中，從而實現零額外計算開銷的推理加速。
+
+### 1. 數學推導
+
+在 Inference 階段，給定線性層輸出 $z = Wx + b$ 與 BN 運算：
+$$\tilde{z} = \gamma \left( \frac{Wx + b - \mu}{\sqrt{\sigma^2 + \epsilon}}  \right) + \beta$$
+
+展開並重組項次：
+$$	ilde{z} = \left( \frac{\gamma}{\sqrt{\sigma^2 + \epsilon}} W 
+ight) x + \left( \frac{\gamma (b - \mu)}{\sqrt{\sigma^2 + \epsilon}} + \beta 
+ight)$$
+
+### 2. 融合後的參數公式
+
+定義融合後的新權重 $W'$ 與新偏置 $b'$：
+$$W' = \frac{\gamma}{\sqrt{\sigma^2 + \epsilon}} W$$
+$$b' = \frac{\gamma (b - \mu)}{\sqrt{\sigma^2 + \epsilon}} + \beta$$
+
+則原本兩層的計算直接縮減為單一線性運算：
+$$\tilde{z} = W' x + b'$$
+
+### 3. 實務部署意義
+* **FC + BN：** $\text{Linear} + \text{BN} \to \text{Fused Linear}$
+* **CNN + BN：** $\text{Conv} + \text{BN} \to \text{Fused Conv}$
+* **結論：** 經過 BatchNorm Folding 後，推理階段**完全不需要執行 BN 運算**，不僅節省了計算時間，還減少了推論時的記憶體存取（Memory Bandwidth），是模型量化與部署（如 TensorRT、ONNX Runtime、CoreML）中極為關鍵的優化技術。
