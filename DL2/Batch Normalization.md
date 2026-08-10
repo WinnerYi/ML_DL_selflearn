@@ -24,7 +24,7 @@
    * **$\epsilon$（Epsilon）的作用：** 這是一個極小的正數常數（置於分母中），主要用於數值穩定性（Numerical Stability），防止變異數 $\sigma^2$ 恰好為 $0$ 時導致除以零的錯誤。
 
 4. **縮放與平移（Rescale and Shift）：**
-   $$	ilde{z}^{(i)} = \gamma z_{\text{norm}}^{(i)} + \beta$$
+   $$\silde{z}^{(i)} = \gamma z_{\text{norm}}^{(i)} + \beta$$
    為了不限制隱藏層只能使用「均值 0、變異數 1」的分布，我們引入了兩個**可學習參數** $\gamma$ 和 $\beta$。
 
 ---
