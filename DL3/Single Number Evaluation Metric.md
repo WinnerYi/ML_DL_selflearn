@@ -22,7 +22,7 @@
 ### ✓ 解決方案（F1 分數）
 在機器學習文獻中，標準的做法是使用 **F1 分數 (F1 Score)** 來結合這兩者。F1 分數在數學上是精確率與召回率的**調和平均數 (Harmonic Mean)**，公式為：
 
-$$	ext{F1 Score} = rac{2}{rac{1}{	ext{Precision}} + rac{1}{	ext{Recall}}} = 2 	imes rac{	ext{Precision} 	imes 	ext{Recall}}{	ext{Precision} + 	ext{Recall}}$$
+$$	ext{F1 Score} = \frac{2}{\frac{1}{	ext{Precision}} + \frac{1}{	ext{Recall}}} = 2 \times \frac{	ext{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}$$
 
 透過這個指標，我們就能快速比較並選出表現較佳的模型（例如直接選擇 F1 分數較高的分類器 A）。
 
