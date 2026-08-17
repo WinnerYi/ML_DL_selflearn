@@ -161,7 +161,7 @@
 #### 數學調整方案：引人加權懲罰（Weighted Error）
 
 原本的分類誤差公式對所有錯誤一視同仁：
-$$\text{Error} = \frac{1}{m_{	ext{dev}}} \sum_{i=1}^{m_{\text{dev}}} \mathcal{L}(y^{(i)}, \hat{y}^{(i)})$$
+$$\text{Error} = \frac{1}{m_{\text{dev}}} \sum_{i=1}^{m_{\text{dev}}} \mathcal{L}(y^{(i)}, \hat{y}^{(i)})$$
 
 調整方式：引入權重項 $w^{(i)}$：
 $$\text{Error} = \frac{1}{\sum w^{(i)}} \sum_{i=1}^{m_{\text{dev}}} w^{(i)} \cdot \mathcal{L}(y^{(i)}, \hat{y}^{(i)})$$
