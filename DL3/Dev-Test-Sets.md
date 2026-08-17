@@ -167,7 +167,7 @@ $$\text{Error} = \frac{1}{m_{\text{dev}}} \sum_{i=1}^{m_{\text{dev}}} \mathcal{L
 $$\text{Error} = \frac{1}{\sum w^{(i)}} \sum_{i=1}^{m_{\text{dev}}} w^{(i)} \cdot \mathcal{L}(y^{(i)}, \hat{y}^{(i)})$$
 
 其中權重設定為：
-$$w^{(i)} = \begin{cases} 1, & \text{若 } x^{(i)} \text{ 為非色情圖片} \ 10 \text{ (或 } 100 \text{)}, & \text{若 } x^{(i)} \text{ 為色情圖片} \end{cases}$$
+$$w^{(i)} = \begin{cases} 1, & \text{若 } x^{(i)} \text{ 為非色情圖片} \\ 10 \text{ (或 } 100 \text{)}, & \text{若 } x^{(i)} \text{ 為色情圖片} \end{cases}$$
 
 * **實務代價**：必須遍歷開發集與測試集，手動標記出色情圖片以進行加權計算。
 
