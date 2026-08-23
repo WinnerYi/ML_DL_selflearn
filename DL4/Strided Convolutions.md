@@ -13,7 +13,7 @@
 
 ## 2. 輸出維度計算公式與下取整（Floor）機制
 * **維度計算公式**：
-  若輸入圖像大小為 $n 	imes n$，濾波器大小為 $f 	imes f$，填充（Padding）大小為 $p$，步幅為 $s$，則輸出矩陣的大小為：
+  若輸入圖像大小為 $n \times n$，濾波器大小為 $f \times f$，填充（Padding）大小為 $p$，步幅為 $s$，則輸出矩陣的大小為：
   $$\left\lfloor \frac{n + 2p - f}{s} \right\rfloor + 1$$
 
   * **範例計算**：
