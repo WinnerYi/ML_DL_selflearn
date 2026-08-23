@@ -58,8 +58,8 @@
 以一個 $6 \times 6$ 的**灰階影像（Grayscale Image）**為例：
 
 * **輸入影像（Input Image）**：單通道灰階影像表示為 $6 \times 6 \times 1$ 矩陣（RGB 彩色影像則為 $6 \times 6 \times 3$）。
-* **濾波器（Filter / Kernel）**：在學術論文中常稱為「內核」。例如一個 $3 \times 3$ 的垂直邊緣偵測濾波器：
-  $$\begin{bmatrix} 1 & 0 & -1 \\ 1 & 0 & -1 \\ 1 & 0 & -1 \end{bmatrix}$$
+* **濾波器（Filter / Kernel）**：在學術論文中常稱為「內核」。例如一個 $3 \times 3$ 的垂直邊緣偵測濾波器
+  $$:\begin{bmatrix} 1 & 0 & -1 \\ 1 & 0 & -1 \\ 1 & 0 & -1 \end{bmatrix}$$
 * **運算符號**：數學上以星號 **$* $** 表示卷積運算。（*註：在 Python 中 $*$ 也代表乘法，實作時需注意符號定義*）。
 
 #### 維度計算與滑動步驟
