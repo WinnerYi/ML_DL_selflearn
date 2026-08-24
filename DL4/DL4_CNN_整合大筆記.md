@@ -55,7 +55,7 @@ $$
 
 對第 `l` 層，每個 filter 先在輸入 `a^[l-1]` 上滑動並做點積，再加上該 filter 對應的 bias：
 
-$$z^{[l]} = \operatorname{conv}(a^{[l-1]}, W^{[l]}) + b^{[l]}$$
+$$z^{[l]} = \mathrm{conv}(a^{[l-1]}, W^{[l]}) + b^{[l]}$$
 
 接著套用非線性函數，例如 ReLU：
 
