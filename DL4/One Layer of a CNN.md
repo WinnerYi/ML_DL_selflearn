@@ -82,10 +82,10 @@ $$a^{[l]} = g(z^{[l]})$$
   $$n_H^{[l]} \times n_W^{[l]} \times n_C^{[l]}$$
 
 * **高度計算公式**：
-  $$n_H^{[l]} = \left\lfloor \frac{n_H^{[l-1]} + 2p^{[l]} - f^{[l]}}{s^{[l]}} + 1  \right floor$$
+  $$n_H^{[l]} = \left\lfloor \frac{n_H^{[l-1]} + 2p^{[l]} - f^{[l]}}{s^{[l]}} + 1  \right\rfloor$$
 
 * **寬度計算公式**：
-  $$n_W^{[l]} = \left\lfloor \frac{n_W^{[l-1]} + 2p^{[l]} - f^{[l]}}{s^{[l]}} + 1 \right floor$$
+  $$n_W^{[l]} = \left\lfloor \frac{n_W^{[l-1]} + 2p^{[l]} - f^{[l]}}{s^{[l]}} + 1 \right \rfloor$$
 
 * **輸出通道數 ($n_C^{[l]}$)**：
   $$n_C^{[l]} = \text{該層使用的濾波器數量}$$
