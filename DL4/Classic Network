@@ -20,6 +20,8 @@
 
 ## 一、 LeNet-5 (1998)
 
+![LeNet-5.](../imgs/LeNet-5.png)
+
 LeNet-5 由 Yann LeCun 等人在 1998 年提出，是卷積神經網路的開山之作，奠定了現代電腦視覺模型的基礎骨架。主要設計用於手寫數字辨識（0–9）。
 
 ### 1. 輸入維度
@@ -58,6 +60,8 @@ LeNet-5 由 Yann LeCun 等人在 1998 年提出，是卷積神經網路的開山
 ---
 
 ## 二、 AlexNet (2012)
+
+![AlexNet](../imgs/AlexNet.png)
 
 AlexNet 由 Alex Krizhevsky、Ilya Sutskever 及 Geoffrey Hinton 設計，在 2012 年 ImageNet 大賽 (ILSVRC) 中以壓倒性優勢奪冠，開啟了深度學習的爆發時代。
 
@@ -101,6 +105,8 @@ AlexNet 由 Alex Krizhevsky、Ilya Sutskever 及 Geoffrey Hinton 設計，在 20
 ---
 
 ## 三、 VGG-16 (2014)
+
+![VGG-16](../imgs/[VGG-16.png)
 
 由牛津大學視覺幾何組（Visual Geometry Group, VGG）提出，VGG-16 以極具規律與對稱的美感著稱，推動了 CNN 架構邁向標準化與模組化。
 
