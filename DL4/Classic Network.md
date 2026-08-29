@@ -106,7 +106,7 @@ AlexNet 由 Alex Krizhevsky、Ilya Sutskever 及 Geoffrey Hinton 設計，在 20
 
 ## 三、 VGG-16 (2014)
 
-![VGG-16](../imgs/[VGG-16.png)
+![VGG-16](../imgs/VGG-16.png)
 
 由牛津大學視覺幾何組（Visual Geometry Group, VGG）提出，VGG-16 以極具規律與對稱的美感著稱，推動了 CNN 架構邁向標準化與模組化。
 
