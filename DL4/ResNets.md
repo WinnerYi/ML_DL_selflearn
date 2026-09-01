@@ -1,7 +1,5 @@
 # 殘差網路 (ResNets) 核心觀念學習筆記
 
-> **資料來源**：整理自 YouTube 影片《C4W2L03 Resnets》逐字稿與經典論文 *Deep Residual Learning for Image Recognition* (He et al.)。
-
 ---
 
 ## 1. 為什麼需要殘差網路 (ResNet)？
