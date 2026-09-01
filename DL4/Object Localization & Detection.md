@@ -72,7 +72,7 @@ $$Y = \begin{bmatrix} P_c \\ B_x \\ B_y \\ B_h \\ B_w \\ c_1 \\ c_2 \\ c_3 \end{
 為了解決重複計算問題，將網路末端的**全連接層（FC）替換為 $1 \times 1$ 卷積層**，實現一次性前向傳播（Shared Computation）。
 
 #### 將 FC 層轉為卷積層的範例：
-* **輸入**：$14 \times 14 \times 3$
+* **輸入** $:14 \times 14 \times 3$
 * **Conv & MaxPool**：降維至 $5 \times 5 \times 16$
 * **FC1（400）** $\rightarrow$ 改用 400 個 $5 \times 5 \times 16$ 濾波器 $\rightarrow$ 輸出 $1 \times 1 \times 400$（數學上完全等價）
 * **FC2（400）** $\rightarrow$ 改用 400 個 $1 \times 1$ 濾波器 $\rightarrow$ 輸出 $1 \times 1 \times 400$
