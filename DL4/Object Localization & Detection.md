@@ -152,7 +152,7 @@ YOLO (You Only Look Once) 將目標偵測轉化為單一端到端（End-to-End�
   
   $$\text{維度} = B \times (1 + 4 + C)$$
 
-  *(以 $19 \times 19$ 網格、5 個 Anchor Boxes、3 個類別為例，總輸出張量為 $19 \times 19 \times 40$)*
+  $$*(以 $19 \times 19$ 網格、5 個 Anchor Boxes、3 個類別為例，總輸出張量為 $19 \times 19 \times 40$)*$$
 * **Ground Truth 分配邏輯**：當物件中心落入某網格時，系統會計算該物件的 Ground Truth 框與該網格所有 Anchor Boxes 的 **IoU**，並分配給 **IoU 最高** 的 Anchor Box 負責預測。
 * **Anchor Box 選取策略**：
   * **手動挑選**：依經驗預設 5～10 種典型長寬比。
