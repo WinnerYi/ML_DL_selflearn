@@ -57,7 +57,7 @@
 
 * **第一階段 $(1 \times 1$ 卷積降維）**：
   * 輸入 $：28 \times 28 \times 192$
-  * 使用 16 個 $1 \times 1 \times 192$ 濾波器，輸出：$28 \times 28 \times 16$
+  * 使用 16 個 $1 \times 1 \times 192$ 濾波器，輸出 $:28 \times 28 \times 16$
   * 計算量 $：28 \times 28 \times 16 \times 1 \times 1 \times 192 = 2,408,448$ 次（約 **240 萬次**）
 * **第二階段 $(5 \times 5$ 卷積處理）**：
   * 輸入 $：28 \times 28 \times 16$
