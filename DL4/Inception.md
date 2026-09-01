@@ -40,11 +40,11 @@
 ### 2.2 高運算成本的挑戰（以 $5 \times 5$ 卷積為例）
 
 若直接對輸入體積 $28 \times 28 \times 192$ 進行 32 個 $5 \times 5$ 卷積（採用 Same padding）：
-* 輸出維度：$28 \times 28 \times 32$
-* 每個輸出數值所需的乘法次數：$5 \times 5 \times 192 = 4,800$ 次
-* 總輸出數值個數：$28 \times 28 \times 32 = 25,088$ 個
+* 輸出維度 $：28 \times 28 \times 32$
+* 每個輸出數值所需的乘法次數 $：5 \times 5 \times 192 = 4,800$ 次
+* 總輸出數值個數 $：28 \times 28 \times 32 = 25,088$ 個
 * **總乘法運算次數**：
-  $$	ext{Total Multiplications} = 28 \times 28 \times 32 \times 5 \times 5 \times 192 \approx 1.204 \text{ 億次 (120M)}$$
+  $$\text{Total Multiplications} = 28 \times 28 \times 32 \times 5 \times 5 \times 192 \approx 1.204 \text{ 億次 (120M)}$$
 直接計算的運算負擔極高，對於深層網路來說成本過於昂貴。
 
 ### 2.3 瓶頸層（Bottleneck Layer）與 1x1 卷積的妙用
@@ -56,17 +56,17 @@
 將計算過程拆分為兩個階段：
 
 * **第一階段（$1 \times 1$ 卷積降維）**：
-  * 輸入：$28 \times 28 \times 192$
+  * 輸入 $：28 \times 28 \times 192$
   * 使用 16 個 $1 \times 1 \times 192$ 濾波器，輸出：$28 \times 28 \times 16$
-  * 計算量：$28 \times 28 \times 16 \times 1 \times 1 \times 192 = 2,408,448$ 次（約 **240 萬次**）
+  * 計算量 $：28 \times 28 \times 16 \times 1 \times 1 \times 192 = 2,408,448$ 次（約 **240 萬次**）
 * **第二階段（$5 \times 5$ 卷積處理）**：
-  * 輸入：$28 \times 28 \times 16$
+  * 輸入 $：28 \times 28 \times 16$
   * 使用 32 個 $5 \times 5 \times 16$ 濾波器，輸出：$28 \times 28 \times 32$
   * 計算量：$28 \times 28 \times 32 \times 5 \times 5 \times 16 = 10,035,200$ 次（約 **1,000 萬次**）
 * **總計算量**：
-  $$	ext{Total Multiplications} = 2,408,448 + 10,035,200 = 12,443,648 \text{ 次 (約 1,240 萬次)}$$
+  $$\text{Total Multiplications} = 2,408,448 + 10,035,200 = 12,443,648 \text{ 次 (約 1,240 萬次)}$$
 
-> **成本對比結論**：引入瓶頸層後，總運算量從約 **1.2 億次** 大幅降低至 **1,240 萬次**，計算成本直接縮減至約原先的 **$rac{1}{10}$**。
+> **成本對比結論**：引入瓶頸層後，總運算量從約 **1.2 億次** 大幅降低至 **1,240 萬次**，計算成本直接縮減至約原先的 **$\frac{1}{10}$**。
 
 ### 2.5 對神經網路性能的影響
 
@@ -116,7 +116,7 @@
 ### 3.2 通道拼接（Channel Concatenation）
 
 計算所有並行分支輸出的通道數總和：
-$$	ext{Total Channels} = \mathbf{64} 	ext{ (1x1 Branch)} + \mathbf{128} 	ext{ (3x3 Branch)} + \mathbf{32} 	ext{ (5x5 Branch)} + \mathbf{32} 	ext{ (Pooling Branch)} = \mathbf{256}$$
+$$\text{Total Channels} = \mathbf{64} \text{ (1x1 Branch)} + \mathbf{128} \text{ (3x3 Branch)} + \mathbf{32} \text{ (5x5 Branch)} + \mathbf{32} \text{ (Pooling Branch)} = \mathbf{256}$$
 
 最終輸出特徵圖維度為：**$28 \times 28 \times 256$**。
 
