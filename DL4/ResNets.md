@@ -83,7 +83,7 @@ ResNet 內部大量採用 **Same Convolution**（保持 Padding 與 Stride 設�
 $$a^{[l+2]} = g(z^{[l+2]} + W_s a^{[l]})$$
 
 $W_s$ 的兩種類型：
-1. **可學習的參數矩陣**：使用 $1 	imes 1$ 卷積層調整 Channel 數量與空間解析度。
+1. **可學習的參數矩陣**：使用 $1 \times 1$ 卷積層調整 Channel 數量與空間解析度。
 2. **固定矩陣**：採用 **零填充 (Zero Padding)** 直接擴充維度。
 
 ---
