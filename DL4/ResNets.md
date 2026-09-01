@@ -103,7 +103,7 @@ $W_s$ 的兩種類型：
 ## 6. 影像 ResNet 架構細節 (He et al.)
 
 典型用於影像分類的 ResNet 架構包含以下關鍵元素：
-1. **主幹結構**：主要由大量的 $3 	imes 3$ Same Convolutions 堆疊組成。
+1. **主幹結構**：主要由大量的 $3 \times 3$ Same Convolutions 堆疊組成。
 2. **池化層 (Pooling)**：網路中會穿插少量的 Pooling Layer（或 Stride=2 的卷積）來下採樣特徵圖；此時會同步啟用 $W_s$ 矩陣對齊捷徑維度。
 3. **尾端輸出**：在所有殘差區塊結束後，接上全局平均池化 (Global Average Pooling)，最後透過一個 **全連接層 (Fully Connected Layer)** 與 **Softmax** 進行類別預測。
 
