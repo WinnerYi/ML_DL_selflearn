@@ -62,7 +62,7 @@
 * **第二階段 $(5 \times 5$ 卷積處理）**：
   * 輸入 $：28 \times 28 \times 16$
   * 使用 32 個 $5 \times 5 \times 16$ 濾波器，輸出：$28 \times 28 \times 32$
-  * 計算量：$28 \times 28 \times 32 \times 5 \times 5 \times 16 = 10,035,200$ 次（約 **1,000 萬次**）
+  * 計算量 $:28 \times 28 \times 32 \times 5 \times 5 \times 16 = 10,035,200$ 次（約 **1,000 萬次**）
 * **總計算量**：
   $$\text{Total Multiplications} = 2,408,448 + 10,035,200 = 12,443,648 \text{ 次 (約 1,240 萬次)}$$
 
