@@ -36,4 +36,4 @@
 | :---: | :---: | :---: | :---: | :--- |
 | **1D** | $14$（單通道） | $5$ | $10$ / $10 \times 16$ | EKG 心電圖、時間序列分析 |
 | **2D** | $14 \times 14$ | $5 \times 5$ | $10 \times 10$ / $10 \times 10 \times 16$ | 影像識別、物件檢測、風格轉換 |
-| **3D** | $14 \times 14 \times 14$ | $5 \times 5 \times 5$ | $10 \times 10 \times 10$ / $10 \times 10 \times 10 \times 16$ | CT 醫療影像、影片動作辨識 |
+| **3D** | $14\times14\times 14$ | $5 \times 5 \times 5$ | $10 \times 10 \times 10$ / $10 \times 10 \times 10 \times 16$ | CT 醫療影像、影片動作辨識 |
